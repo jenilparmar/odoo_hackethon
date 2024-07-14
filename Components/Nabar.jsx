@@ -19,7 +19,7 @@ function Nabar() {
         </Link>
       </div>
       <div className="flex flex-col self-center justify-center">
-        <Link href="/">
+        <Link href="/AddBooks">
           <IoMdAddCircle className="self-center text-gray-700 active:text-gray-900 text-3xl" />
         </Link>
       </div>
