@@ -1,8 +1,9 @@
 import Nabar from "@/Components/Nabar";
 import ProfileBooks from "@/Components/ProfileBooks";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CiEdit } from "react-icons/ci";
 function profile() {
+ 
   return (
     <div className="h-fit w-full flex flex-col">
       <div className="bg-pink-300 w-full h-16 rounded-2xl flex flex-row -mt-2 p-4  font-semibold md:justify-between text-xl">

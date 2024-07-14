@@ -37,7 +37,7 @@ const Signup = () => {
 
   return (
     <div className="w-screen h-screen flex justify-center">
-      <div className="w-10/12 md:w-3/12 shadow-md rounded-md self-center flex flex-col border-2 h-96">
+      <div className="w-10/12 md:w-3/12 shadow-md rounded-md self-center flex flex-col border-2 h-fit py-6">
         <div className="mt-6 rounded-lg border-2 bg-slate-300 w-5/12 self-center flex flex-row justify-center">
         <Link href={'/login'}>
         

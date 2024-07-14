@@ -11,7 +11,7 @@ function Searchbar() {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    setError(null); // Reset error state
+    setError(null); 
     try {
       const response = await axios.get(`https://www.googleapis.com/books/v1/volumes`, {
         params: {
@@ -43,7 +43,7 @@ function Searchbar() {
 const handleWithdraw = async()=>{
   const forData = {
     isbn : search,
-    email : localStorage.getItem("email")
+   
   }
   const res = fetch("/api/AssignBook",{
     method: 'POST',
@@ -52,8 +52,8 @@ const handleWithdraw = async()=>{
         },
         body: JSON.stringify( forData ),
       })
-   alert(res)
-   Router.push("/profile")
+   alert((await res).json())
+   
 }
   return (
     <div className="h-screen w-full flex flex-col items-center">

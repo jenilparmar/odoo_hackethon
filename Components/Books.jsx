@@ -30,7 +30,7 @@ const Books = ({ book }) => {
       }
     };
 
-    // fetchBookData();
+    fetchBookData();
   }, [book.isbn]);
 
   if (!bookData) {

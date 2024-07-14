@@ -15,7 +15,7 @@ const BookFeed = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch(`/api/GetAllBooks?page=${page}`);
+        const response = await fetch(`/api/GetAllBooks`);
         const data = await response.json();
         setBooks((prevBooks) => [...prevBooks, ...data]);
         setLoading(false);
@@ -26,19 +26,12 @@ const BookFeed = () => {
       }
     };
 
-    fetchBooks();
+    // fetchBooks();
   }, [page]);
 
-  const handleScroll = useCallback(debounce(() => {
-    if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 200 && hasMore) {
-      setPage((prevPage) => prevPage + 1);
-    }
-  }, 200), [hasMore]);
+  
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
+
 const name = localStorage.getItem("name")
   return (
    <>

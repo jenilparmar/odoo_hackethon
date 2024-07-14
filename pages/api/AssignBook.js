@@ -32,7 +32,7 @@ export default async function handler(req, res) {
       const updatedItems = book.items - 1;
       await booksCollection.updateOne({ isbn }, { $set: { items: String(updatedItems) } });
 
-      res.status(200).json({ message: "Data saved successfully!" });
+      res.status(200).json({ message: "Books Assigned Successfully" });
     } catch (error) {
       console.error("Error:", error);
       res.status(500).json({ message: error.message });
