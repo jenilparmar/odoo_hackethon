@@ -2,11 +2,15 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { TbFilterEdit } from "react-icons/tb";
+
 function Searchbar() {
   const [search, setSearch] = useState('');
   const [books, setBooks] = useState([]);
+  const [error, setError] = useState(null);
 
-  const handleSearch = async () => {
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    setError(null); // Reset error state
     try {
       const response = await axios.get(`https://www.googleapis.com/books/v1/volumes`, {
         params: {
@@ -26,9 +30,13 @@ function Searchbar() {
 
       setBooks(bookItems);
       console.log(bookItems); // Logging the updated book items array
-
     } catch (error) {
       console.error('Error fetching books:', error);
+      if (error.response && error.response.status === 429) {
+        setError('Too many requests. Please try again later.');
+      } else {
+        setError('An error occurred while fetching books.');
+      }
     }
   };
 
@@ -38,9 +46,7 @@ function Searchbar() {
         <div className="w-full flex flex-row justify-center mt-2">
           <input
             type="text"
-            onChange={(e) => {
-              setSearch(e.target.value);
-            }}
+            onChange={(e) => setSearch(e.target.value)}
             className="h-10 w-8/12 self-center px-2 font-normal placeholder:px-2 rounded-md"
             placeholder="Search Books"
           />
@@ -51,9 +57,11 @@ function Searchbar() {
           >
             Search
           </button>
-          <TbFilterEdit  className='font-medium text-2xl self-center text-black active:text-xl transition-all duration-100'/>
+          <TbFilterEdit className="font-medium text-2xl self-center text-black active:text-xl transition-all duration-100" />
         </div>
       </div>
+
+      {error && <p className="text-red-500">{error}</p>}
 
       <div className="mt-4 w-full flex flex-col items-center">
         {books.length > 0 ? (
@@ -64,8 +72,8 @@ function Searchbar() {
               <p className="text-sm text-gray-700">Published year: {book.publishedDate}</p>
               <p className="text-sm text-gray-700">Rating: {book.rating}/5</p>
               <p className="text-sm text-gray-700">Genre: {book.categories}</p>
-              <p className="text-sm text-gray-700">Cost: $10 / 5 days</p>
-              <button className='p-2 bg-pink-300 rounded-md font-medium'>Withdraw</button>
+              <p className="text-sm text-gray-700">Cost: ${'6'} / 5 days</p>
+              <button className="p-2 bg-pink-300 rounded-md font-medium">Withdraw</button>
             </div>
           ))
         ) : (

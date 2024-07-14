@@ -38,15 +38,20 @@ const Books = ({ book }) => {
   }
 
   return (
-    <div className="h-fit w-11/12 bg-slate-200 py-2 self-center justify-start flex flex-row mt-2">
+    <div className="h-fit w-11/12 bg-slate-200 py-4 self-center justify-start flex flex-row mt-2">
       <div className="w-28 h-32 bg-transparent p-2 border-2 rounded-md">
-       <Image
-  src={`https://covers.openlibrary.org/b/isbn/${book.isbn}-S.jpg`}
-  width={120}
-  height={150}
-  layout="responsive"
-  objectFit="cover" 
-/>
+       try {
+        <Image
+        src={`https://covers.openlibrary.org/b/isbn/${book.isbn}-S.jpg`}
+        width={120}
+        height={150}
+        layout="responsive"
+        objectFit="contain" 
+      />
+       } catch (error) {
+          <>
+          </>
+       }{}
       </div>
       <div className="flex flex-col p-2">
         <p className="font-medium">Name: {bookData[0]?.title}</p>

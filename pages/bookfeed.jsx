@@ -38,6 +38,7 @@ const BookFeed = () => {
           <Books key={idx} book={book} />
         ))
       )}
+      <div className="h-40 w-screen mb-10"></div>
     </div>
   );
 };
