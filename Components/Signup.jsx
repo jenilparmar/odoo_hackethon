@@ -31,6 +31,7 @@ const Signup = () => {
       const res = s;
       localStorage.setItem("name" , formData.name)
       localStorage.setItem("role" , formData.role)
+      localStorage.setItem("email" , formData.email)
    router.push("/bookfeed")
   };
 

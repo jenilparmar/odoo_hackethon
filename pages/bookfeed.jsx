@@ -50,6 +50,7 @@ const name = localStorage.getItem("name")
         <IoMdLogOut onClick={()=>{
           localStorage.removeItem('role');
           localStorage.removeItem('name');
+          localStorage.removeItem('email');
           router.push("/")
         }} className="text-2xl text-white self-center mt-2 active:text-pink-400 transition-all md:text-4xl duration-100" />
       </div>
