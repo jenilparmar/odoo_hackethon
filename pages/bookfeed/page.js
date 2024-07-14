@@ -1,7 +1,7 @@
 import React from "react";
 import Books from "@/Components/Books";
 import { IoMdLogOut } from "react-icons/io";
-import Searchbar from "@/pages/Searchbar";
+
 function bookfeed() {
   return (
     <div className="h-screen w-full flex flex-col">

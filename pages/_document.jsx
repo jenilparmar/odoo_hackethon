@@ -5,11 +5,15 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
+    <div className="flex flex-col">
       <body>
-        {/* <Nabar/> */}
+        <Nabar/>
+        
         <Main />
+        
         <NextScript />
       </body>
+      </div>
     </Html>
   );
 }

@@ -8,7 +8,6 @@ export default function Home() {
     <>
    <div className="flex flex-col">
  <Signup/>
- <Navbar/>
 
    </div>
     </>
