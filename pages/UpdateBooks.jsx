@@ -33,13 +33,13 @@ function page() {
       <div className="w-10/12 h-fit py-8  flex flex-col self-center shadow-lg mt-28">
         <div className="w-8/12 bg-slate-200  justify-center gap-2 self-center flex flex-row">
           <Link href={'/AddBooks'}>
-          <p className="active rounded-lg p-2  text-center font-medium self-center">
+          <p className=" rounded-lg p-2  text-center font-medium self-center">
             Add
           </p>
           </Link>
           <Link href={'/UpdateBooks'}>
 
-          <p className="text-center rounded-lg p-2  font-medium self-center">
+          <p className=" active text-center rounded-lg p-2  font-medium self-center">
             Update
 
           </p>

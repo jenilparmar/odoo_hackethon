@@ -1,7 +1,7 @@
 'use client';
 import axios from 'axios';
 import React, { useState } from 'react';
-
+import { TbFilterEdit } from "react-icons/tb";
 function Searchbar() {
   const [search, setSearch] = useState('');
   const [books, setBooks] = useState([]);
@@ -51,6 +51,7 @@ function Searchbar() {
           >
             Search
           </button>
+          <TbFilterEdit  className='font-medium text-2xl self-center text-black active:text-xl transition-all duration-100'/>
         </div>
       </div>
 
