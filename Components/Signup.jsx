@@ -20,7 +20,7 @@ const Signup = () => {
 
   const handleSubmit =async (e) => {
     e.preventDefault();
-    // console.log('Form data:', formData);
+  
       const s = await fetch("/api/getuser",{
         method: 'POST',
         headers: {
@@ -29,6 +29,8 @@ const Signup = () => {
         body: JSON.stringify( formData ),
       })
       const res = s;
+      localStorage.setItem("name" , formData.name)
+      localStorage.setItem("role" , formData.role)
    router.push("/bookfeed")
   };
 

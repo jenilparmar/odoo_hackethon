@@ -1,3 +1,4 @@
+import Nabar from "@/Components/Nabar";
 import Link from "next/link";
 
 import { useState } from "react";
@@ -58,6 +59,7 @@ function page() {
 
 
       </div>
+      <Nabar/>
     </div>
   );
 }

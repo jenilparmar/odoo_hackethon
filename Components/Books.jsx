@@ -24,13 +24,13 @@ const Books = ({ book }) => {
           categories: item.volumeInfo.categories ? item.volumeInfo.categories.join(', ') : 'Unknown Genre',
         }));
         
-        setBookData(bookItems);
+        setBookData(bookItems[0]); // Assuming we need the first book item
       } catch (error) {
         console.error('Error fetching book data:', error);
       }
     };
 
-    fetchBookData();
+    // fetchBookData();
   }, [book.isbn]);
 
   if (!bookData) {
@@ -40,23 +40,18 @@ const Books = ({ book }) => {
   return (
     <div className="h-fit w-11/12 bg-slate-200 py-4 self-center justify-start flex flex-row mt-2">
       <div className="w-28 h-32 bg-transparent p-2 border-2 rounded-md">
-       try {
         <Image
-        src={`https://covers.openlibrary.org/b/isbn/${book.isbn}-S.jpg`}
-        width={120}
-        height={150}
-        layout="responsive"
-        objectFit="contain" 
-      />
-       } catch (error) {
-          <>
-          </>
-       }{}
+          src={`https://covers.openlibrary.org/b/isbn/${book.isbn}-S.jpg`}
+          width={120}
+          height={150}
+          layout="responsive"
+          objectFit="contain" 
+        />
       </div>
       <div className="flex flex-col p-2">
-        <p className="font-medium">Name: {bookData[0]?.title}</p>
-        <p className="font-medium">Genre: {bookData[0]?.categories}</p>
-        <p className="font-medium">Year: {bookData[0]?.publishedDate}</p>
+        <p className="font-medium">Name: {bookData.title}</p>
+        <p className="font-medium">Genre: {bookData.categories}</p>
+        <p className="font-medium">Year: {bookData.publishedDate}</p>
         <p className="font-medium">Cost: ${book.cost} $/hour</p>
       </div>
     </div>

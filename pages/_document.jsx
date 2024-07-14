@@ -7,7 +7,7 @@ export default function Document() {
       <Head />
     <div className="flex flex-col">
       <body>
-        <Nabar/>
+   
         
         <Main />
         

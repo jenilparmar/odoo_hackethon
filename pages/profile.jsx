@@ -1,3 +1,4 @@
+import Nabar from "@/Components/Nabar";
 import ProfileBooks from "@/Components/ProfileBooks";
 import React from "react";
 import { CiEdit } from "react-icons/ci";
@@ -8,7 +9,12 @@ function profile() {
         Hello Jenil!!
       </div>
       <div className="w-full h-40 flex flex-row justify-center gap-2">
-        <div className="rounded-full self-center bg-pink-400 w-28 h-28"></div>
+        <div className="rounded-full self-center bg-pink-400 w-28 h-28" style={{
+          backgroundImage:'url(https://img.freepik.com/premium-vector/man-male-young-person-icon_24877-30222.jpg)',
+          backgroundPosition:"center",
+          backgroundSize:"cover",
+          backgroundRepeat:"no-repeat"
+        }}></div>
         <div className="flex flex-col justify-center">
           <p className="font-medium">@jenil</p>
           <p className="text-gray-700 text-sm">Admin</p>
@@ -27,7 +33,7 @@ function profile() {
     }}>My Books</div>
     <ProfileBooks/>
 
-
+<Nabar/>
     </div>
   );
 }

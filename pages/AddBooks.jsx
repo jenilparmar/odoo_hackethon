@@ -1,34 +1,49 @@
-'use client'
 import React, { useState } from "react";
 import Link from "next/link";
+import axios from 'axios';
+import Nabar from "@/Components/Nabar";
 
-function page() {
-  const [isbn  , setisbn ] = useState("");
-  const [items  , setItems ] = useState(0);
-  const [cost  , setCost ] = useState(0);
-  const  handleSubmit = async ()=>{
-    const data = {
-      isbn:isbn,
-      items:items,
-      cost:cost
+
+
+function Page() {
+  const [isbn, setisbn] = useState("");
+  const [items, setItems] = useState(0);
+  const [cost, setCost] = useState(0);
+  const [bookData, setBookData] = useState(null);
+
+  const handleSubmit = async () => {
+    try {
+      // Fetch book data first
+
+
+      // Prepare data to send to backend
+      const data = {
+        isbn: isbn,
+        items: items,
+        cost: cost,
+       
+      };
+
+     
+      const res = await fetch('/api/addToDataBase', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+      console.log(result);
+      alert(result);
+      setCost(0);
+      setItems(0);
+      setisbn("");
+    } catch (error) {
+      console.error('Error handling form submission:', error);
     }
+  };
 
-    const res = await fetch('/api/addToDataBase', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify( data ),
-    });
-
-    const result = await res.json();
-    setCost(0);
-    setItems(0)
-    setisbn("")
-    alert(result)
-    console.log(data);
-
-  }
   return (
     <div className="w-screen h-screen flex flex-col justify-start">
       <div className="w-10/12 h-fit py-8  flex flex-col self-center shadow-lg mt-28">
@@ -78,8 +93,9 @@ function page() {
 
 
       </div>
+      <Nabar/>
     </div>
   );
 }
 
-export default page;
+export default Page;

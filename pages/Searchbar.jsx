@@ -1,4 +1,5 @@
 'use client';
+import Nabar from '@/Components/Nabar';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { TbFilterEdit } from "react-icons/tb";
@@ -11,33 +12,33 @@ function Searchbar() {
   const handleSearch = async (e) => {
     e.preventDefault();
     setError(null); // Reset error state
-    try {
-      const response = await axios.get(`https://www.googleapis.com/books/v1/volumes`, {
-        params: {
-          q: `isbn:${search}`,
-          key: process.env.NEXT_PUBLIC_BOOK_API,
-        },
-      });
+  //   try {
+  //     const response = await axios.get(`https://www.googleapis.com/books/v1/volumes`, {
+  //       params: {
+  //         q: `isbn:${search}`,
+  //         key: process.env.NEXT_PUBLIC_BOOK_API,
+  //       },
+  //     });
 
-      const bookItems = response.data.items.map((item) => ({
-        id: item.id,
-        title: item.volumeInfo.title,
-        authors: item.volumeInfo.authors ? item.volumeInfo.authors.join(', ') : 'Unknown Author',
-        publishedDate: item.volumeInfo.publishedDate,
-        rating: item.volumeInfo.averageRating || 'No Rating',
-        categories: item.volumeInfo.categories ? item.volumeInfo.categories.join(', ') : 'Unknown Genre',
-      }));
+  //     const bookItems = response.data.items.map((item) => ({
+  //       id: item.id,
+  //       title: item.volumeInfo.title,
+  //       authors: item.volumeInfo.authors ? item.volumeInfo.authors.join(', ') : 'Unknown Author',
+  //       publishedDate: item.volumeInfo.publishedDate,
+  //       rating: item.volumeInfo.averageRating || 'No Rating',
+  //       categories: item.volumeInfo.categories ? item.volumeInfo.categories.join(', ') : 'Unknown Genre',
+  //     }));
 
-      setBooks(bookItems);
-      console.log(bookItems); // Logging the updated book items array
-    } catch (error) {
-      console.error('Error fetching books:', error);
-      if (error.response && error.response.status === 429) {
-        setError('Too many requests. Please try again later.');
-      } else {
-        setError('An error occurred while fetching books.');
-      }
-    }
+  //     setBooks(bookItems);
+  //     console.log(bookItems); // Logging the updated book items array
+  //   } catch (error) {
+  //     console.error('Error fetching books:', error);
+  //     if (error.response && error.response.status === 429) {
+  //       setError('Too many requests. Please try again later.');
+  //     } else {
+  //       setError('An error occurred while fetching books.');
+  //     }
+  //   }
   };
 
   return (
@@ -80,6 +81,7 @@ function Searchbar() {
           <p className="text-gray-500">No books found. Try searching for a book.</p>
         )}
       </div>
+      <Nabar/>
     </div>
   );
 }
