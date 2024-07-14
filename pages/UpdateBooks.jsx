@@ -5,14 +5,28 @@ function page() {
   const [isbn  , setisbn ] = useState("");
   const [items  , setItems ] = useState(0);
   const [cost  , setCost ] = useState(0);
-  const handleSubmit = (e)=>{
-    e.preventDefualt();
+ 
+  const handleSubmit =async (e)=>{
+
     const data = {
       isbn:isbn,
       items:items,
-      cost:cost
+      cost:cost,
+   
     }
-    console.log(data);
+    const call =await fetch('api/updateFromDataBase', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify( data ),
+    });
+    const res = await call.json();
+   console.log(res);
+   setCost(0)
+   setItems(0)
+   setisbn("")
+
   }
   return (
     <div className="w-screen h-screen flex flex-col justify-start">

@@ -4,13 +4,20 @@ import { useState } from "react";
 function page() {
   const [isbn  , setisbn ] = useState("");
 
-  const handleSubmit = ()=>{
+  const handleSubmit =async ()=>{
    const  data = {
       isbn:isbn,
       
     }
-    console.log(data);
-
+    const res = await fetch('api/removeFromDataBase',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body:JSON.stringify(data)
+    })
+    console.log(res.json());
+    setisbn("")
   }
   return (
     <div className="w-screen h-screen flex flex-col justify-start">

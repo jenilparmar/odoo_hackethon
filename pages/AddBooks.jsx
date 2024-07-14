@@ -6,12 +6,26 @@ function page() {
   const [isbn  , setisbn ] = useState("");
   const [items  , setItems ] = useState(0);
   const [cost  , setCost ] = useState(0);
-  const handleSubmit = ()=>{
+  const  handleSubmit = async ()=>{
     const data = {
       isbn:isbn,
       items:items,
       cost:cost
     }
+
+    const res = await fetch('/api/addToDataBase', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify( data ),
+    });
+
+    const result = await res.json();
+    setCost(0);
+    setItems(0)
+    setisbn("")
+    alert(result)
     console.log(data);
 
   }
